@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "toodoo-3b53e": {
+      "hosting": {
+        "app": [
+          "toodoo-3b53e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "toodoo-3b53e"
+  }
+}
