@@ -1,0 +1,7 @@
+{
+  "name": "toodoo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
