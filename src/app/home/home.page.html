@@ -13,8 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div id="container" color="">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+
+  <div>
+    <!-- <img src="{{imgURL}}" height="200" width="200"/> -->
+    <ion-button (click)="getCamera()">From Camera</ion-button>
+    <ion-button (click)="getGallery()">From Gallery</ion-button>
   </div>
 </ion-content>
