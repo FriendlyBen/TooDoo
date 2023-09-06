@@ -16,9 +16,57 @@ export class HomePage {
 
   }
 
-  addUser(){
-    const newUser: User = {Name:"Jordan"};
-    return this.userService.addUser(newUser);
+  async addUser(){
+    const alert = await this.alertCtrl.create({
+      header: "New User",
+      inputs:[
+        {
+          name: "Name",
+          placeholder: "I want your name",
+          type:'text',
+        },
+        {
+          name: "Age",
+          placeholder: "I want your age",
+          type:'number',
+        },        {
+          name: "PhoneNumber",
+          placeholder: "I want your contact number",
+          type:'text',
+        },        {
+          name: "Salary",
+          placeholder: "I want your salary",
+          type:'text',
+        },
+        {
+          name: "Weight",
+          placeholder: "I want your weight",
+          type:'number',
+        },
+      ],
+      buttons:[
+        {
+          text:"Cancel",
+          role:"cancel"
+        },
+        {
+          text:"Register",
+          handler: (data)=>{
+            console.log(data.PhoneNumber);
+            const newUser: User = {
+              Name: `${data.Name}`,
+              Age: data.Age,
+              PhoneNumber: `${data.PhoneNumber}`,
+              Salary: `${data.Salary}`,
+              Weight: data.Weight
+            };
+            this.userService.addUser(newUser);
+          }
+        }
+
+      ]
+    });
+    await alert.present();
   }
 
   getUsers(){
