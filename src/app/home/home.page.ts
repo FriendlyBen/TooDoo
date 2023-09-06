@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {Camera} from '@awesome-cordova-plugins/camera/ngx/index'
+import { UsersService } from '../service/users.service';
+import { User } from '../model/user.model';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +12,43 @@ import {Camera} from '@awesome-cordova-plugins/camera/ngx/index'
 export class HomePage {
   imgURL: any;
 
-  constructor(private camera: Camera) {}
+  constructor(private camera: Camera,private userService: UsersService, private alertCtrl: AlertController) {
+
+  }
+
+  addUser(){
+    const newUser: User = {Name:"Jordan"};
+    return this.userService.addUser(newUser);
+  }
+
+  getUsers(){
+    this.userService.getUsers().subscribe((data) =>{
+      console.log(data);
+    })
+  }
+
+  async getUserByName(){
+      const alert = await this.alertCtrl.create({
+        header: 'Search User',
+        inputs:[
+          {name: 'Username',
+        placeholder: "I need a name",
+      type: "text"}
+        ],
+        buttons:[
+          {text:"Cancel",
+        role:'cancel'},
+        {
+          text:'Search',
+          handler: (data) =>{
+            this.userService.getUserByName(data.Username);
+          }
+        }
+        ]
+      });
+      await alert.present();
+  }
+
 
 
   getCamera(){

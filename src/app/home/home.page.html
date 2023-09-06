@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true">  <!--This is for small header (Small blank)-->
   <ion-toolbar>
     <ion-title>
       Blank
@@ -6,8 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true"> <!--This is the big header (Big Blank)-->
+  <ion-header collapse="condense"> <!--COvering the small header-->
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
@@ -19,8 +19,11 @@
   </div>
 
   <div>
-    <!-- <img src="{{imgURL}}" height="200" width="200"/> -->
+    <!-- <img src="{{imgURL}}" height="200" width="200"/> --> <!--Display Image taken from camera or gallery-->
     <ion-button (click)="getCamera()">From Camera</ion-button>
     <ion-button (click)="getGallery()">From Gallery</ion-button>
+    <ion-button (click)="addUser()">Add User</ion-button>
+    <ion-button (click)="getUsers()">Get Users</ion-button>
+    <ion-button (click)="getUserByName()">Get Specific User</ion-button>
   </div>
 </ion-content>

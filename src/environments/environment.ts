@@ -11,7 +11,7 @@ export const environment = {
     storageBucket: "toodoo-3b53e.appspot.com",
     messagingSenderId: "383296342271",
     appId: "1:383296342271:web:1e4469785b884d0db0a4ca"
-  }
+  },
 };
 
 /*
