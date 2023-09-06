@@ -3,6 +3,7 @@ import {Camera} from '@awesome-cordova-plugins/camera/ngx/index'
 import { UsersService } from '../service/users.service';
 import { User } from '../model/user.model';
 import { AlertController } from '@ionic/angular';
+import { CameraPreview, CameraPreviewOptions } from "@ionic-native/camera-preview/ngx";
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,12 @@ import { AlertController } from '@ionic/angular';
 export class HomePage {
   imgURL: any;
 
-  constructor(private camera: Camera,private userService: UsersService, private alertCtrl: AlertController) {
-
+  constructor(
+    private camera: Camera,
+    private userService: UsersService, 
+    private alertCtrl: AlertController,
+    private CameraPreview: CameraPreview
+    ) {
   }
 
   async addUser(){
@@ -90,7 +95,9 @@ export class HomePage {
         {
           text:'Search',
           handler: (data) =>{
-            this.userService.getUserByName(data.Username);
+            this.userService.getUserByName(data.Username).subscribe((result)=>{
+              console.log(result);
+            });
           }
         }
         ]
@@ -121,4 +128,21 @@ export class HomePage {
       console.log(e);
     })
   }
+
+  startCP(){
+    const cameraPreviewOpts: CameraPreviewOptions = {
+      x: 0,
+      y: 100,
+      width: window.screen.width,
+      height: window.screen.height * 70/100,
+      camera: 'rear',
+
+      // toBack: true,
+      // tapPhoto: true,
+      // previewDrag: true,
+    };
+    this.CameraPreview.setZoom(0.5);
+    this.CameraPreview.startCamera(cameraPreviewOpts);
+  }
+
 }

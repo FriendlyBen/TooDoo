@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Firestore, collectionData, deleteDoc, doc, docData} from '@angular/fire/firestore';
+import {Firestore, collectionData, deleteDoc, docData} from '@angular/fire/firestore';
 import {collection} from '@firebase/firestore';
 import { User } from '../model/user.model';
 import { Observable } from 'rxjs';
-import { addDoc } from 'firebase/firestore';
+import { addDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 
 @Injectable({
@@ -19,9 +19,24 @@ export class UsersService {
   }
 
   getUserByName(name: string): Observable<User> {
-    const usersDocRef = doc(this.firestore, `users/${name}`);
-    console.log(name);
-    return docData(usersDocRef) as Observable<User>;
+    const usersCollectionRef = collection(this.firestore,'users');
+    const q =query(usersCollectionRef,where('Name','==',name));
+    
+    return new Observable<User>((observer)=>{
+      getDocs(q)
+      .then((querySnapshot)=>{
+        if(!querySnapshot.empty){
+          const user = querySnapshot.docs[0].data() as User;
+          observer.next(user);
+        } else{
+          observer.next(undefined); //no user with that name
+        }
+        observer.complete();
+      })
+      .catch((error)=>{
+        observer.error(error);
+      });
+    });
   }
 
   addUser(user: User){
