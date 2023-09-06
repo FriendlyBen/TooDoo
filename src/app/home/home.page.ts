@@ -52,13 +52,14 @@ export class HomePage {
         {
           text:"Register",
           handler: (data)=>{
-            console.log(data.PhoneNumber);
+            var age: number = parseInt(data.Age,10);
+            var weight: number = parseInt(data.Weight,10);
             const newUser: User = {
               Name: `${data.Name}`,
-              Age: data.Age,
+              Age: age,
               PhoneNumber: `${data.PhoneNumber}`,
               Salary: `${data.Salary}`,
-              Weight: data.Weight
+              Weight: weight
             };
             this.userService.addUser(newUser);
           }
