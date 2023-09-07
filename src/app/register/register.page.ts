@@ -14,6 +14,9 @@ export class RegisterPage implements OnInit {
   salary!: string;
   weight!: number;
 
+  email!: string;
+  password!: string;
+
 
   constructor(private userService: UsersService) { }
 
@@ -21,14 +24,7 @@ export class RegisterPage implements OnInit {
   }
 
   register(){
-    const newUser: User = {
-      Name: this.name,
-      Age: this.age,
-      PhoneNumber: this.contactNo,
-      Salary: this.salary,
-      Weight: this.weight
-    };
-    this.userService.addUser(newUser);
+    this.userService.register(this.email, this.password);
   }
 
 }

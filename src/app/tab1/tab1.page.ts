@@ -17,5 +17,9 @@ export class Tab1Page implements OnInit {
     this.router.navigateByUrl('/register');
   }
 
+  navigateToLogin(){
+    this.router.navigateByUrl('/login');
+  }
+
 
 }
