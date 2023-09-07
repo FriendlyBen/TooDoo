@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- <ion-title>register</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="big">  
+    <div class="register">
+      <div style="height: 10vh; width: 40vw;">
+        <h3 style="text-align: center;">Enter your details</h3>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-input [(ngModel)]="name" label="Name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="age" label="Age" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="contactNo" label="Contact No."></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="salary" label="Salary"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="weight" label="Weight" type="number"></ion-input>
+        </ion-item>
+      </ion-list>
+      
+      <ion-button (click)="register()">Register</ion-button>
+  </div>
+</div>
+
+
+</ion-content>

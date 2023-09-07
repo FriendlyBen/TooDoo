@@ -11,12 +11,13 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {Camera} from '@awesome-cordova-plugins/camera/ngx/index';
 import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore())],
-  providers: [Camera, CameraPreview, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [Camera, CameraPreview, FormsModule, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

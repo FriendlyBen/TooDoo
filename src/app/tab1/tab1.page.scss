@@ -1,0 +1,14 @@
+/* tab1.page.scss */
+ion-fab[slot="fixed"] {
+    bottom: 20px; /* Adjust the value to your desired height */
+  }
+
+#lol{
+    height: 50px;
+    width: 100px;
+    background-color:purple;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

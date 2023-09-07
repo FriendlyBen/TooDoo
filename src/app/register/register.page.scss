@@ -1,0 +1,22 @@
+.register{
+    border: 1px solid black;
+    border-radius: 20px;
+    height:65vh;
+    width: 70vw;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+}
+
+.big{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regInput{
+    height: 10vh;
+    width:40vw;
+}
+

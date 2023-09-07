@@ -40,8 +40,10 @@ export class UsersService {
   }
 
   addUser(user: User){
+    console.log(typeof user);
     const usersRef =collection(this.firestore, 'users');
     addDoc(usersRef,user);
+    console.log("Successful!")
   }
 
   deleteUser(user:User){
